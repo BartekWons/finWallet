@@ -1,0 +1,20 @@
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+WORKDIR /src
+
+COPY ["./FinWallet/FinWallet.slnx", "./"]
+COPY ["./FinWallet/FinWallet/FinWallet.csproj", "FinWallet/"]
+COPY ["./FinWallet/FinWallet.Application/FinWallet.Application.csproj", "FinWallet.Application/"]
+COPY ["./FinWallet/FinWallet.Domain/FinWallet.Domain.csproj", "FinWallet.Domain/"]
+COPY ["./FinWallet/FinWallet.Infrastructure/FinWallet.Infrastructure.csproj", "FinWallet.Infrastructure/"]
+
+RUN dotnet restore
+
+COPY . .
+WORKDIR "/src/FinWallet"
+RUN dotnet publish -c Release -o /app/publish
+
+FROM mcr.microsoft.com/dotnet/aspnet:10.0
+WORKDIR /app
+COPY --from=build /app/publish .
+
+ENTRYPOINT ["dotnet", "FinWallet.dll"]
