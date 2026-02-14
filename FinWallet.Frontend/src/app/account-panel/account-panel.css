@@ -1,6 +1,36 @@
+.accounts-wrapper {
+  position: relative;
+  padding-top: 60px;
+}
+
+.add-btn {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  font-size: 42px;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.add-btn:hover {
+  color: #ffffff;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
 .accounts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 16px;
-  padding: 20px;
+  padding: 0 20px;
+  margin-top: 20px;
 }

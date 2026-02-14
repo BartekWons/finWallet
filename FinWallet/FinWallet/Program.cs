@@ -1,4 +1,6 @@
+using FinWallet.Extensions;
 using FinWallet.Installers;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,10 +28,18 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+await app.InitialiseDatabaseAsync();
+
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseRouting();
+
+app.MapGet("/hello", () => "HelloWorld!!!");
 
 app.Run();

@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-left-sidebar',
-  imports: [SidebarButton, AccountPanel, CommonModule],
+  imports: [SidebarButton, CommonModule],
   templateUrl: './left-sidebar.html',
   styleUrl: './left-sidebar.css',
 })

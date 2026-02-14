@@ -1,6 +1,18 @@
-<div class="accounts-grid">
-  <app-account-card
-    *ngFor="let acc of accounts"
-    [account]="acc">
-  </app-account-card>
+<div class="accounts-wrapper">
+
+  <button class="add-btn" (click)="openDialog()">+</button>
+
+  <div class="accounts-grid">
+    <app-account-card
+      *ngFor="let acc of accounts"
+      [account]="acc">
+    </app-account-card>
+  </div>
+
+  <app-add-account-dialog
+    *ngIf="dialogOpen"
+    (close)="closeDialog()"
+    (save)="addAccount($event)">
+  </app-add-account-dialog>
+
 </div>

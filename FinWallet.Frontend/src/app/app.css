@@ -13,6 +13,9 @@ app-left-sidebar {
 .content-area {
   flex-grow: 1;
   background-color: #1e293b;
-  padding: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
   overflow-y: auto;
 }
