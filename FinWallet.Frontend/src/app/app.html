@@ -1,0 +1,29 @@
+<div class="app-container">
+  <app-left-sidebar 
+    [currentActive]="activePanel" 
+    (panelChanged)="changePanel($event)">
+  </app-left-sidebar>
+
+  <main class="content-area">
+    <div [ngSwitch]="activePanel">
+        <div *ngSwitchCase="'overview'">
+            <h2>Overview Panel</h2>
+            <p>Witamy w panelu głównym.</p>
+        </div>
+
+        <app-account-panel *ngSwitchCase="'accounts'"></app-account-panel>
+
+        <div *ngSwitchCase="'ppk'">
+            <h2>PPK Panel</h2>
+        </div>
+        
+        <div *ngSwitchCase="'trades'">
+            <h2>Trades Panel</h2>
+        </div>
+
+        <div *ngSwitchCase="'currencies'">
+            <h2>Currencies Panel</h2>
+        </div>
+      </div>
+  </main>
+</div>
