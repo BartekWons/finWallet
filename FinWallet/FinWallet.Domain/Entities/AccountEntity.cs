@@ -1,4 +1,4 @@
-﻿namespace FinWallet.Infrastructure.Entities
+﻿namespace FinWallet.Domain.Entities
 {
     public class AccountEntity
     {

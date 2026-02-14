@@ -1,4 +1,4 @@
-﻿using FinWallet.Infrastructure.Entities;
+﻿using FinWallet.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace FinWallet.Infrastructure.Persistence
