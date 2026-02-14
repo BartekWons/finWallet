@@ -1,0 +1,60 @@
+<div class="modal-backdrop">
+  <div class="modal">
+    <h2>Add account</h2>
+
+    <form (ngSubmit)="onSave()">
+      <div class="form-group">
+        <input
+          type="text"
+          placeholder="Name"
+          [(ngModel)]="accountName"
+          name="accountName"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <input 
+          list="currencies" 
+          [(ngModel)]="selectedCurrency" 
+          name="currency" 
+          placeholder="Currency"
+          [disabled]="isSubAccount"
+          [required]="!isSubAccount"
+        />
+        <datalist id="currencies">
+          <option *ngFor="let c of currencies" [value]="c"></option>
+        </datalist>
+      </div>
+
+      <div class="form-group">
+        <input 
+          list="parentAccounts" 
+          [(ngModel)]="parentAccount" 
+          name="parentAccount" 
+          placeholder="Parent Account (optional)"
+        />
+        <datalist id="parentAccounts">
+          <option *ngFor="let acc of existingAccounts" [value]="acc.name"></option>
+        </datalist>
+      </div>
+
+      <div class="form-check">
+        <label class="checkbox-container">
+          <input 
+            type="checkbox" 
+            [(ngModel)]="isSubAccount" 
+            name="isSubAccount"
+          />
+          <span class="checkmark"></span>
+          Is a parent account?
+        </label>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn-save">Add</button>
+        <button type="button" class="btn-cancel" (click)="onClose()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

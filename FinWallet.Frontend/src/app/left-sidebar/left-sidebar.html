@@ -1,0 +1,34 @@
+<div class="sidebar">
+
+  <div class="logo">FinWallet</div>
+
+  <app-sidebar-button
+    label="Overview"
+    [active]="currentActive === 'overview'"
+    (clicked)="setActive('overview')">
+  </app-sidebar-button>
+
+  <app-sidebar-button
+    label="Accounts"
+    [active]="currentActive === 'accounts'"
+    (clicked)="setActive('accounts')">
+  </app-sidebar-button>
+
+  <app-sidebar-button
+    label="PPK"
+    [active]="currentActive === 'ppk'"
+    (clicked)="setActive('ppk')">
+  </app-sidebar-button>
+
+  <app-sidebar-button
+    label="Trades"
+    [active]="currentActive === 'trades'"
+    (clicked)="setActive('trades')">
+  </app-sidebar-button>
+
+    <app-sidebar-button
+    label="Currencies"
+    [active]="currentActive === 'currencies'"
+    (clicked)="setActive('currencies')">
+  </app-sidebar-button>
+</div>

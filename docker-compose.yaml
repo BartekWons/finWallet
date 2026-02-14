@@ -1,0 +1,43 @@
+services:
+  # database service
+  database:
+    container_name: finwallet-db  
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    
+  # backend service
+  backend:
+    container_name: finwallet-backend  
+    build: 
+      context: .
+      dockerfile: Docker/Dockerfile.backend
+    environment:
+    - ConnectionStrings__DefaultConnection=Host=database;Database=${DB_NAME};Username=${DB_USER};Password=${DB_PASSWORD}
+    - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5000:8080"
+    depends_on:
+      - database
+  
+  # frontend service
+  frontend:
+    container_name: finwallet-frontend 
+    build: 
+      context: .
+      dockerfile: Docker/Dockerfile.frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+
+
